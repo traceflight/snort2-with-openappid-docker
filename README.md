@@ -55,7 +55,7 @@ $ snort -c /etc/snort/snort.conf -r /data/pcapfile.pcap
 
 可使用自带的appid_detector_builder.sh脚本生成自定义检测器。
 
-将自定义检测脚本放置在`custom/lua`文件夹中，然后重新挂载`custom`文件夹到`/etc/snort/appid/`文件夹中。
+将自定义检测脚本放置在`custom/lua`文件夹中，然后重新build容器或挂载`custom`文件夹到`/etc/snort/appid/`文件夹中。
 
 ## 使用中可能出现错误提示
 
