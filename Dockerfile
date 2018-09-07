@@ -5,6 +5,9 @@ ENV DAQ_VERSION 2.0.6
 ENV SNORT_VERSION 2.9.11.1
 ENV OPENAPPID_VERSION 8373
 
+ADD etc/snort.conf /etc/snort/
+ADD rules /etc/snort/rules
+
 # install requirements
 RUN yum -y install epel-release libdnet && \
     yum -y install make wget gcc gcc-c++ libdnet libdnet-devel luajit luajit-devel hwloc hwloc-devel openssl openssl-devel zlib-devel pkgconfig libpcap libpcap-devel pcre pcre-devel lzma xz-devel bison flex libnetfilter_queue-devel
@@ -33,30 +36,15 @@ RUN cd /home/snort/apps && \
     cp -R odp /etc/snort/appid/
 
 # other steps
-RUN mkdir /etc/snort && \
-    mkdir /etc/snort/rules && \
-    mkdir /etc/snort/rules/iplists && \
-    mkdir /etc/snort/preproc_rules && \
-    mkdir /usr/local/lib/snort_dynamicrules && \
-    mkdir /etc/snort/so_rules && \
+RUN mkdir /usr/local/lib/snort_dynamicrules && \
     mkdir /usr/local/lib/thirdparty && \
-    touch /etc/snort/rules/iplists/black_list.rules && \
-    touch /etc/snort/rules/iplists/white_list.rules && \
-    touch /etc/snort/rules/local.rules && \
     touch /etc/snort/sid-msg.map && \
     mkdir /var/log/snort && \
     mkdir /var/log/snort/archived_logs && \
-    chmod -R 5775 /etc/snort && \
-    chmod -R 5775 /var/log/snort && \
-    chmod -R 5775 /var/log/snort/archived_logs && \
-    chmod -R 5775 /etc/snort/so_rules && \
-    chmod -R 5775 /usr/local/lib/snort_dynamicrules && \
     cd /home/snort/apps/snort-${SNORT_VERSION}/etc && \
     cp *.conf* /etc/snort && \
     cp *.map /etc/snort && \
     cp *.dtd /etc/snort
-
-ADD etc/snort.conf /etc/snort/
 
 # Cleanup.
 RUN yum clean all && \
