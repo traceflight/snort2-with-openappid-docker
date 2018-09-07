@@ -8,6 +8,7 @@ Dockerfile of snort2 with openappid
 |snort|2.9.11.1|
 |daq|2.0.6|
 |openappid|8373|
+|rules|community|
 
 ## 使用方法
 
@@ -49,6 +50,12 @@ $ docker run -it --rm -v path/to/pcapdir:/data \
 ```
 $ snort -c /etc/snort/snort.conf -r /data/pcapfile.pcap 
 ```
+
+## 自定义应用检测器
+
+可使用自带的appid_detector_builder.sh脚本生成自定义检测器。
+
+将自定义检测脚本放置在`custom/lua`文件夹中，然后重新挂载`custom`文件夹到`/etc/snort/appid/`文件夹中。
 
 ## 使用中可能出现错误提示
 
