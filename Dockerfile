@@ -5,7 +5,6 @@ ENV DAQ_VERSION 2.0.6
 ENV SNORT_VERSION 2.9.11.1
 ENV OPENAPPID_VERSION 8373
 
-ADD etc/snort.conf /etc/snort/
 ADD rules /etc/snort/rules
 ADD custom /etc/snort/appid/custom
 
@@ -45,6 +44,8 @@ RUN mkdir /usr/local/lib/snort_dynamicrules && \
     cp *.conf* /etc/snort && \
     cp *.map /etc/snort && \
     cp *.dtd /etc/snort
+
+ADD etc/snort.conf /etc/snort/
 
 # Cleanup.
 RUN yum clean all && \
