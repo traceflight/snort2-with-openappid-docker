@@ -7,6 +7,7 @@ ENV OPENAPPID_VERSION 8373
 
 ADD etc/snort.conf /etc/snort/
 ADD rules /etc/snort/rules
+ADD custom /etc/snort/appid/custom
 
 # install requirements
 RUN yum -y install epel-release libdnet && \
@@ -32,7 +33,6 @@ RUN cd /home/snort/apps && \
 RUN cd /home/snort/apps && \
     wget https://www.snort.org/downloads/openappid/${OPENAPPID_VERSION} -O snort-openappid.tar.gz && \
     tar -zxvf snort-openappid.tar.gz && \
-    mkdir -p /etc/snort/appid/ && \
     cp -R odp /etc/snort/appid/
 
 # other steps
