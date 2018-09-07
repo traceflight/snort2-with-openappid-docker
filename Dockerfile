@@ -34,6 +34,13 @@ RUN cd /home/snort/apps && \
     tar -zxvf snort-openappid.tar.gz && \
     cp -R odp /etc/snort/appid/
 
+# update community rules
+RUN cd /home/snort/apps && \
+    wget https://www.snort.org/downloads/community/snort3-community-rules.tar.gz -O snort3-community-rules.tar.gz && \
+    tar -xvf snort3-community-rules.tar.gz && \
+    cp snort3-community-rules/snort3-community.rules /etc/snort/rules/rules/ && \
+    cp snort3-community-rules/sid-msg.map /etc/snort/rules/rules/
+
 # other steps
 RUN mkdir /usr/local/lib/snort_dynamicrules && \
     mkdir /usr/local/lib/thirdparty && \
