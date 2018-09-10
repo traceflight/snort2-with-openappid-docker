@@ -36,10 +36,9 @@ RUN cd /home/snort/apps && \
 
 # update community rules
 RUN cd /home/snort/apps && \
-    wget https://www.snort.org/downloads/community/snort3-community-rules.tar.gz -O snort3-community-rules.tar.gz && \
-    tar -xvf snort3-community-rules.tar.gz && \
-    cp snort3-community-rules/snort3-community.rules /etc/snort/rules/rules/ && \
-    cp snort3-community-rules/sid-msg.map /etc/snort/rules/rules/
+    wget https://snort.org/downloads/community/community-rules.tar.gz -O community-rules.tar.gz && \
+    tar -xvf community-rules.tar.gz && \
+    cp community-rules.tar.gz/* /etc/snort/rules/rules/
 
 # other steps
 RUN mkdir /usr/local/lib/snort_dynamicrules && \
