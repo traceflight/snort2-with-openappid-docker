@@ -38,7 +38,7 @@ RUN cd /home/snort/apps && \
 RUN cd /home/snort/apps && \
     wget https://snort.org/downloads/community/community-rules.tar.gz -O community-rules.tar.gz && \
     tar -xvf community-rules.tar.gz && \
-    cp community-rules.tar.gz/* /etc/snort/rules/rules/
+    cp community-rules/* /etc/snort/rules/rules/
 
 # other steps
 RUN mkdir /usr/local/lib/snort_dynamicrules && \
