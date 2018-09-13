@@ -57,5 +57,7 @@ ADD etc/snort.conf /etc/snort/
 RUN yum clean all && \
     rm -rf /var/tmp/* && \
     rm -rf /tmp/* && \
+    rm -rf /home/snort/apps/*.rpm && \
+    rm -rf /home/snort/apps/*.gz && \
     snort -V
 
