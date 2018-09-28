@@ -11,8 +11,7 @@ ADD custom /etc/snort/appid/custom
 # install requirements
 RUN yum -y install epel-release libdnet && \
     yum -y install make wget gcc gcc-c++ libdnet libdnet-devel luajit luajit-devel hwloc hwloc-devel openssl openssl-devel zlib-devel pkgconfig libpcap libpcap-devel pcre pcre-devel lzma xz-devel bison flex libnetfilter_queue-devel && \
-    yum clean all && \
-    rm -rf /var/cache/yum
+    yum clean all
 
 # install daq
 RUN mkdir -p /home/snort/apps && \
