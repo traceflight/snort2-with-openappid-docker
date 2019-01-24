@@ -2,7 +2,7 @@ FROM centos:7
 MAINTAINER Julian Wang <traceflight@outlook.com>
 
 ENV DAQ_VERSION 2.0.6
-ENV SNORT_VERSION 2.9.11.1
+ENV SNORT_VERSION 2.9.12
 ENV OPENAPPID_VERSION 9552
 
 ADD rules /etc/snort/rules
